@@ -1,0 +1,11 @@
+{
+	"dbConfig": {
+        "client": "sqlite",
+        "connection": {
+            "filename": "../us-census.db"
+        }
+    },
+    "port": 8080,
+	"bodyLimit": "100kb",
+	"corsHeaders": ["Link"]
+}
