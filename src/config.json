@@ -3,7 +3,8 @@
         "client": "sqlite",
         "connection": {
             "filename": "../us-census.db"
-        }
+        },
+        "useNullAsDefault": true
     },
     "port": 8080,
 	"bodyLimit": "100kb",

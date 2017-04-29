@@ -6,21 +6,21 @@ class CensusController {
   static create(api = Router()) {
     const router = new CensusController();
 
-    api.get('/', (req, res) => router.getCensusEducationData(req, res));
+    api.get('/:metric', (req, res) => router.getCensusFieldData(req, res));
 
     return api;
   }
 
-  getCensusEducationData(req, res) {
-    console.log('Calling get');
+  getCensusFieldData(req, res) {
+    const field = req.params.metric;
     CensusModel.query((qb) => {
-      qb.select('education');
-      qb.groupBy('education');
+      qb.select(field.toString());
+      qb.groupBy(field.toString());
       qb.avg('age');
       qb.count();
     }).fetchAll()
-      .then((education) => {
-        res.json({ education });
+      .then((census) => {
+        res.json({ census });
       });
   }
 }
