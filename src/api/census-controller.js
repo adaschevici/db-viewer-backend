@@ -16,11 +16,19 @@ class CensusController {
     CensusModel.query((qb) => {
       qb.select(field.toString());
       qb.groupBy(field.toString());
-      qb.avg('age');
+      qb.avg('age'); // avg by field ?
       qb.count();
     }).fetchAll()
       .then((census) => {
-        res.json({ census });
+        const formattedCensusData = census.map((obj) => {
+          const formatted = {
+            average: obj.attributes['avg("age")'],
+            count: obj.attributes['count(*)']
+          };
+          formatted[field] = obj.attributes[field];
+          return formatted;
+        });
+        res.json({ census: formattedCensusData });
       });
   }
 }

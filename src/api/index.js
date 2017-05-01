@@ -1,13 +1,13 @@
 import { version } from '../../package.json';
 import { Router } from 'express';
 import CensusController from './census-controller';
-import ModelMetaController from './get-model-meta';
+import ModelMetaDataController from './get-model-meta';
 
 export default () => {
 	let api = Router();
 
   // mount the column meta route
-  api.use('/model', ModelMetaController.create());
+  api.use('/model', ModelMetaDataController.create());
 
   // mount view-db controller
   api.use('/census-view', CensusController.create());

@@ -1,10 +1,10 @@
 import { Router } from 'express';
 import { CensusModel } from '../models/census-model';
 
-class ModelMetaController {
+class ModelMetaDataController {
 
   static create(api = Router()) {
-    const router = new ModelMetaController();
+    const router = new ModelMetaDataController();
 
     api.get('/column-names', (req, res) => router.getColumnNames(req, res));
 
@@ -21,5 +21,4 @@ class ModelMetaController {
   }
 }
 
-export default ModelMetaController;
-
+export default ModelMetaDataController;
