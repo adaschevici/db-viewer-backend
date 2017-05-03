@@ -5,6 +5,7 @@ Getting Started
 # clone it
 git clone git@github.com:adaschevici/db-viewer-backend.git
 cd db-viewer-backend
+env GZIP=-9 tar -xvf us-census.db.tar.gz
 
 # Install dependencies
 npm install
